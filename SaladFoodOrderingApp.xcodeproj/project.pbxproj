@@ -15,6 +15,9 @@
 		BAE5329D2913ECD900C8DEA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532732913ECD600C8DEA6 /* ContentView.swift */; };
 		BAE5329E2913ECD900C8DEA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE532742913ECD900C8DEA6 /* Assets.xcassets */; };
 		BAE5329F2913ECD900C8DEA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE532742913ECD900C8DEA6 /* Assets.xcassets */; };
+		BAE532B02913F03E00C8DEA6 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE532AF2913F03E00C8DEA6 /* Color.xcassets */; };
+		BAE532B12913F03E00C8DEA6 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE532AF2913F03E00C8DEA6 /* Color.xcassets */; };
+		BAE532B32913F1A100C8DEA6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532B22913F1A100C8DEA6 /* Color+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,8 @@
 		BAE5328A2913ECD900C8DEA6 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
 		BAE5328C2913ECD900C8DEA6 /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
 		BAE532922913ECD900C8DEA6 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAE532AF2913F03E00C8DEA6 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		BAE532B22913F1A100C8DEA6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +95,9 @@
 		BAE532712913ECD600C8DEA6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BAE532AE2913F02500C8DEA6 /* Resource */,
 				BAE532722913ECD600C8DEA6 /* SaladFoodOrderingAppApp.swift */,
 				BAE532732913ECD600C8DEA6 /* ContentView.swift */,
-				BAE532742913ECD900C8DEA6 /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -115,6 +120,16 @@
 				BAE5328C2913ECD900C8DEA6 /* Tests_iOSLaunchTests.swift */,
 			);
 			path = "Tests iOS";
+			sourceTree = "<group>";
+		};
+		BAE532AE2913F02500C8DEA6 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				BAE532742913ECD900C8DEA6 /* Assets.xcassets */,
+				BAE532AF2913F03E00C8DEA6 /* Color.xcassets */,
+				BAE532B22913F1A100C8DEA6 /* Color+Extension.swift */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAE5329E2913ECD900C8DEA6 /* Assets.xcassets in Resources */,
+				BAE532B02913F03E00C8DEA6 /* Color.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAE5329F2913ECD900C8DEA6 /* Assets.xcassets in Resources */,
+				BAE532B12913F03E00C8DEA6 /* Color.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAE532B32913F1A100C8DEA6 /* Color+Extension.swift in Sources */,
 				BAE5329C2913ECD900C8DEA6 /* ContentView.swift in Sources */,
 				BAE5329A2913ECD900C8DEA6 /* SaladFoodOrderingAppApp.swift in Sources */,
 			);
