@@ -11,13 +11,16 @@
 		BAE5328D2913ECD900C8DEA6 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5328C2913ECD900C8DEA6 /* Tests_iOSLaunchTests.swift */; };
 		BAE5329A2913ECD900C8DEA6 /* SaladFoodOrderingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532722913ECD600C8DEA6 /* SaladFoodOrderingAppApp.swift */; };
 		BAE5329B2913ECD900C8DEA6 /* SaladFoodOrderingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532722913ECD600C8DEA6 /* SaladFoodOrderingAppApp.swift */; };
-		BAE5329C2913ECD900C8DEA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532732913ECD600C8DEA6 /* ContentView.swift */; };
-		BAE5329D2913ECD900C8DEA6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532732913ECD600C8DEA6 /* ContentView.swift */; };
+		BAE5329C2913ECD900C8DEA6 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532732913ECD600C8DEA6 /* ItemView.swift */; };
+		BAE5329D2913ECD900C8DEA6 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532732913ECD600C8DEA6 /* ItemView.swift */; };
 		BAE5329E2913ECD900C8DEA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE532742913ECD900C8DEA6 /* Assets.xcassets */; };
 		BAE5329F2913ECD900C8DEA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE532742913ECD900C8DEA6 /* Assets.xcassets */; };
 		BAE532B02913F03E00C8DEA6 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE532AF2913F03E00C8DEA6 /* Color.xcassets */; };
 		BAE532B12913F03E00C8DEA6 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE532AF2913F03E00C8DEA6 /* Color.xcassets */; };
 		BAE532B32913F1A100C8DEA6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532B22913F1A100C8DEA6 /* Color+Extension.swift */; };
+		BAE532B62917F63700C8DEA6 /* PaddingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532B52917F63700C8DEA6 /* PaddingManager.swift */; };
+		BAE532B82917F95900C8DEA6 /* ShapeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532B72917F95900C8DEA6 /* ShapeManager.swift */; };
+		BAE532BB2917FB2F00C8DEA6 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532BA2917FB2F00C8DEA6 /* Rating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +42,7 @@
 
 /* Begin PBXFileReference section */
 		BAE532722913ECD600C8DEA6 /* SaladFoodOrderingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaladFoodOrderingAppApp.swift; sourceTree = "<group>"; };
-		BAE532732913ECD600C8DEA6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BAE532732913ECD600C8DEA6 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		BAE532742913ECD900C8DEA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAE532792913ECD900C8DEA6 /* SaladFoodOrderingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaladFoodOrderingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE5327F2913ECD900C8DEA6 /* SaladFoodOrderingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaladFoodOrderingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +52,9 @@
 		BAE532922913ECD900C8DEA6 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE532AF2913F03E00C8DEA6 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		BAE532B22913F1A100C8DEA6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		BAE532B52917F63700C8DEA6 /* PaddingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingManager.swift; sourceTree = "<group>"; };
+		BAE532B72917F95900C8DEA6 /* ShapeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeManager.swift; sourceTree = "<group>"; };
+		BAE532BA2917FB2F00C8DEA6 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,9 +101,10 @@
 		BAE532712913ECD600C8DEA6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BAE532B92917FB2400C8DEA6 /* Component */,
 				BAE532AE2913F02500C8DEA6 /* Resource */,
+				BAE532B42917F4E500C8DEA6 /* View */,
 				BAE532722913ECD600C8DEA6 /* SaladFoodOrderingAppApp.swift */,
-				BAE532732913ECD600C8DEA6 /* ContentView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -128,8 +135,26 @@
 				BAE532742913ECD900C8DEA6 /* Assets.xcassets */,
 				BAE532AF2913F03E00C8DEA6 /* Color.xcassets */,
 				BAE532B22913F1A100C8DEA6 /* Color+Extension.swift */,
+				BAE532B52917F63700C8DEA6 /* PaddingManager.swift */,
+				BAE532B72917F95900C8DEA6 /* ShapeManager.swift */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		BAE532B42917F4E500C8DEA6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BAE532732913ECD600C8DEA6 /* ItemView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BAE532B92917FB2400C8DEA6 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				BAE532BA2917FB2F00C8DEA6 /* Rating.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,8 +317,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAE532BB2917FB2F00C8DEA6 /* Rating.swift in Sources */,
+				BAE532B82917F95900C8DEA6 /* ShapeManager.swift in Sources */,
 				BAE532B32913F1A100C8DEA6 /* Color+Extension.swift in Sources */,
-				BAE5329C2913ECD900C8DEA6 /* ContentView.swift in Sources */,
+				BAE532B62917F63700C8DEA6 /* PaddingManager.swift in Sources */,
+				BAE5329C2913ECD900C8DEA6 /* ItemView.swift in Sources */,
 				BAE5329A2913ECD900C8DEA6 /* SaladFoodOrderingAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,7 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAE5329D2913ECD900C8DEA6 /* ContentView.swift in Sources */,
+				BAE5329D2913ECD900C8DEA6 /* ItemView.swift in Sources */,
 				BAE5329B2913ECD900C8DEA6 /* SaladFoodOrderingAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
