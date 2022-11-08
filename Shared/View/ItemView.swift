@@ -17,15 +17,19 @@ struct ItemView: View {
                 ZStack {}
                     .frame(width: 200, height: 200)
                     .background(Color.red)
+                
                 // TODO: Buttons/item name
                 HStack {
-                    ArrowButton(isRightFacing: false) {
+                    RoundArrowButton(isRightFacing: false) {
                         // TODO: Prev item
                     }
                     Spacer()
+                    // Item name
                     Text("Item name")
+                        .font(.title)
+                        .fontWeight(.bold)
                     Spacer()
-                    ArrowButton(isRightFacing: true) {
+                    RoundArrowButton(isRightFacing: true) {
                         // TODO: Next item
                     }
                 }
@@ -67,13 +71,17 @@ struct ItemView: View {
     }
 }
 
-struct ArrowButton: View {
+struct RoundArrowButton: View {
     let isRightFacing: Bool
     let onClick: () -> Void
     
     var body: some View {
         Button(action: onClick) {
-            Text("clicker")
+            Image(systemName: isRightFacing ? "chevron.right" : "chevron.left")
+                .padding()
+                .foregroundColor(Color.onPrimary)
+                .background(Color.primaryColor)
+                .clipShape(Circle())
         }
     }
 }
@@ -94,7 +102,6 @@ struct AddToCartButton: View {
 }
 
 struct QuantityButton: View {
-    
     var body: some View {
         HStack {
             Button(action: {}) {
@@ -116,6 +123,7 @@ struct QuantityButton: View {
 
 private struct IngredientCard: View {
     let ingredientName: String
+    
     var body: some View {
         Text(ingredientName)
             .padding(8)
