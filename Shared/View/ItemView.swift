@@ -9,74 +9,78 @@ import SwiftUI
 
 struct ItemView: View {
     var body: some View {
-        ZStack {
-            Color.background
-            VStack {
-                // TODO: Nav bar
-                // TODO: Salad image
-                ZStack {}
-                    .frame(width: 200, height: 200)
-                    .background(Color.red)
-                
-                // TODO: Buttons/item name
-                HStack {
-                    RoundArrowButton(isRightFacing: false) {
-                        // TODO: Prev item
-                    }
-                    Spacer()
-                    // Item name
-                    Text("Item name")
-                        .font(.title)
-                        .fontWeight(.bold)
-                    Spacer()
-                    RoundArrowButton(isRightFacing: true) {
-                        // TODO: Next item
-                    }
-                }
-                
-                // Review stars/count
-                HStack {
-                    Rating(
-                        rating: .constant(5),
-                        label: "110 reviews"
-                    )
-                    Spacer()
-                }
-                
-                // Description
-                Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                )
-                .font(.subheadline)
-                .foregroundColor(.secondaryVariant)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                
-                // Price/Ingredients
-                HStack(spacing: 24) {
-                    // Price
-                    Text("$7.89")
-                        .font(.title2)
-                        .fontWeight(.bold)
+        GeometryReader { metrics in
+            ZStack {
+                Color.background
+                VStack {
+                    // TODO: Nav bar
+                    // TODO: Salad image
+                    ZStack {}
+                        .frame(width: 200, height: 200)
+                        .background(Color.red)
                     
-                    // Ingredients
+                    // TODO: Buttons/item name
                     HStack {
-                        IngredientCard(ingredientName: "foo")
-                        IngredientCard(ingredientName: "bar")
-                        IngredientCard(ingredientName: "buzz")
+                        RoundArrowButton(isRightFacing: false) {
+                            // TODO: Prev item
+                        }
+                        Spacer()
+                        // Item name
+                        Text("Item name")
+                            .font(.title)
+                            .fontWeight(.bold)
+                        Spacer()
+                        RoundArrowButton(isRightFacing: true) {
+                            // TODO: Next item
+                        }
                     }
-                    Spacer()
-                }
-                
-                HStack {
-                    // Add to cart
-                    AddToCartButton(onClick: {})
+                    
+                    // Review stars/count
+                    HStack {
+                        Rating(
+                            rating: .constant(5),
+                            label: "110 reviews"
+                        )
+                        Spacer()
+                    }
+                    
+                    // Description
+                    Text(
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    )
+                    .font(.subheadline)
+                    .foregroundColor(.secondaryVariant)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    // Price/Ingredients
+                    HStack(spacing: 24) {
+                        // Price
+                        Text("$7.89")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                        
+                        // Ingredients
+                        HStack {
+                            IngredientCard(ingredientName: "foo")
+                            IngredientCard(ingredientName: "bar")
+                            IngredientCard(ingredientName: "buzz")
+                        }
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        // Add to cart
+                        AddToCartButton(onClick: {})
+                            .frame(maxWidth: metrics.size.width * 0.6)
 
-                    // Quantity btn(s)
-                    QuantityButton()
+                        // Quantity btn(s)
+                        QuantityButton()
+                            .frame(maxWidth: metrics.size.width * 0.3)
+                    }
                 }
             }
+            .padding(PaddingManager.viewPadding)
         }
-        .padding(PaddingManager.viewPadding)
     }
 }
 
@@ -105,9 +109,14 @@ struct AddToCartButton: View {
     var body: some View {
         Button(action: onClick) {
             Image(systemName: "bag")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 24, height: 24)
             Text("Add to cart")
+                .font(.title2)
+                .frame(maxWidth: .infinity)
         }
-        .padding()
+        .padding(12)
         .background(backgroundColor)
         .foregroundColor(foregroundColor)
         .cornerRadius(ShapeManager.buttonShape)
@@ -122,16 +131,19 @@ struct QuantityButton: View {
         HStack {
             Button(action: {}) {
                 Text("-")
+                    .font(.title2)
             }
             Spacer()
             Text("1")
+                .font(.title2)
             Spacer()
             Button(action: {}) {
                 Text("+")
+                    .font(.title2)
             }
         }
         .foregroundColor(foregroundColor)
-        .padding()
+        .padding(12)
         .background(backgroundColor)
         .cornerRadius(ShapeManager.buttonShape)
     }
