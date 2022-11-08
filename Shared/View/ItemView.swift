@@ -47,14 +47,23 @@ struct ItemView: View {
                 Text(
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 )
+                .font(.subheadline)
+                .foregroundColor(.secondaryVariant)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 
                 // Price/Ingredients
                 HStack(spacing: 24) {
                     // Price
-                    Text("Price")
+                    Text("$7.89")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    
                     // Ingredients
-                    IngredientCard(ingredientName: "foo")
-                    IngredientCard(ingredientName: "bar")
+                    HStack {
+                        IngredientCard(ingredientName: "foo")
+                        IngredientCard(ingredientName: "bar")
+                        IngredientCard(ingredientName: "buzz")
+                    }
                     Spacer()
                 }
                 
@@ -133,9 +142,10 @@ private struct IngredientCard: View {
     
     var body: some View {
         Text(ingredientName)
-            .padding(8)
-            .padding(.horizontal, 10)
-            .foregroundColor(Color.onPrimary)
+            .font(.footnote)
+            .padding(5)
+            .padding(.horizontal, 16)
+            .foregroundColor(Color.black.opacity(0.8))
             .background(Color.primaryColor)
             .cornerRadius(ShapeManager.cardShape)
     }
