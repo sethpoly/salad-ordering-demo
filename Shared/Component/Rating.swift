@@ -16,16 +16,20 @@ struct Rating: View {
     var offImage: Image?
     var onImage = Image(systemName: "star.fill")
     var offColor = Color.gray
-    var onColor = Color.yellow
+    var onColor = Color.ratingYellow
     
     var body: some View {
-        HStack(spacing: 2) {
+        HStack(alignment: .center, spacing: 4) {
             ForEach(1..<maximumRating + 1, id: \.self) { number in
                 image(for: number)
+                    .resizable()
                     .foregroundColor(number > rating ? offColor : onColor)
+                    .frame(maxWidth: 12, maxHeight: 12)
             }
             if label.isEmpty == false {
                 Text(label)
+                    .foregroundColor(Color.secondaryVariant)
+                    .font(.caption)
             }
         }
     }
@@ -41,6 +45,6 @@ struct Rating: View {
 
 struct Rating_Preview: PreviewProvider {
     static var previews: some View {
-        Rating(rating: .constant(5))
+        Rating(rating: .constant(5), label: "110 reviews")
     }
 }

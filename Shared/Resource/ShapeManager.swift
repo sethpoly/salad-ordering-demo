@@ -9,6 +9,6 @@ import Foundation
 import SwiftUI
 
 class ShapeManager {
-    static let cardShape: CGFloat = 12
+    static let cardShape: CGFloat = 8
     static let buttonShape: CGFloat = 8
 }
