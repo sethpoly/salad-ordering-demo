@@ -38,7 +38,7 @@ struct ItemView: View {
                 HStack {
                     Rating(
                         rating: .constant(5),
-                        label: "wow"
+                        label: "110 reviews"
                     )
                     Spacer()
                 }
@@ -74,13 +74,15 @@ struct ItemView: View {
 struct RoundArrowButton: View {
     let isRightFacing: Bool
     let onClick: () -> Void
+    var foregroundColor = Color.onPrimary
+    var backgroundColor = Color.primaryColor
     
     var body: some View {
         Button(action: onClick) {
             Image(systemName: isRightFacing ? "chevron.right" : "chevron.left")
                 .padding()
-                .foregroundColor(Color.onPrimary)
-                .background(Color.primaryColor)
+                .foregroundColor(foregroundColor)
+                .background(backgroundColor)
                 .clipShape(Circle())
         }
     }
@@ -88,6 +90,8 @@ struct RoundArrowButton: View {
 
 struct AddToCartButton: View {
     let onClick: () -> Void
+    var backgroundColor = Color.secondaryColor
+    var foregroundColor = Color.onSecondary
     
     var body: some View {
         Button(action: onClick) {
@@ -95,13 +99,16 @@ struct AddToCartButton: View {
             Text("Add to cart")
         }
         .padding()
-        .background(Color.secondaryColor)
-        .foregroundColor(.onSecondary)
+        .background(backgroundColor)
+        .foregroundColor(foregroundColor)
         .cornerRadius(ShapeManager.buttonShape)
     }
 }
 
 struct QuantityButton: View {
+    var backgroundColor = Color.secondaryColor
+    var foregroundColor = Color.onSecondary
+    
     var body: some View {
         HStack {
             Button(action: {}) {
@@ -114,9 +121,9 @@ struct QuantityButton: View {
                 Text("+")
             }
         }
-        .foregroundColor(Color.onSecondary)
+        .foregroundColor(foregroundColor)
         .padding()
-        .background(Color.secondaryColor)
+        .background(backgroundColor)
         .cornerRadius(ShapeManager.buttonShape)
     }
 }
