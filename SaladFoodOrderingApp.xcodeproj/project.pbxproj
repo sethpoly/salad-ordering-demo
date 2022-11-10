@@ -24,6 +24,8 @@
 		BAE532C1291D2B7500C8DEA6 /* RoundArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532C0291D2B7500C8DEA6 /* RoundArrowButton.swift */; };
 		BAE532C3291D2C0100C8DEA6 /* AddToCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532C2291D2C0100C8DEA6 /* AddToCartButton.swift */; };
 		BAE532C5291D2C3000C8DEA6 /* QuantityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532C4291D2C3000C8DEA6 /* QuantityButton.swift */; };
+		BAE532CB291D34E800C8DEA6 /* PreviewMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532CA291D34E800C8DEA6 /* PreviewMe.swift */; };
+		BAE532CD291D350B00C8DEA6 /* DeviceName.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532CC291D350B00C8DEA6 /* DeviceName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		BAE532C0291D2B7500C8DEA6 /* RoundArrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundArrowButton.swift; sourceTree = "<group>"; };
 		BAE532C2291D2C0100C8DEA6 /* AddToCartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartButton.swift; sourceTree = "<group>"; };
 		BAE532C4291D2C3000C8DEA6 /* QuantityButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityButton.swift; sourceTree = "<group>"; };
+		BAE532CA291D34E800C8DEA6 /* PreviewMe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMe.swift; sourceTree = "<group>"; };
+		BAE532CC291D350B00C8DEA6 /* DeviceName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 		BAE532712913ECD600C8DEA6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BAE532C9291D34DF00C8DEA6 /* Util */,
 				BAE532B92917FB2400C8DEA6 /* Component */,
 				BAE532AE2913F02500C8DEA6 /* Resource */,
 				BAE532B42917F4E500C8DEA6 /* View */,
@@ -172,6 +177,15 @@
 				BAE532C4291D2C3000C8DEA6 /* QuantityButton.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		BAE532C9291D34DF00C8DEA6 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				BAE532CA291D34E800C8DEA6 /* PreviewMe.swift */,
+				BAE532CC291D350B00C8DEA6 /* DeviceName.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,8 +348,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAE532CD291D350B00C8DEA6 /* DeviceName.swift in Sources */,
 				BAE532BB2917FB2F00C8DEA6 /* Rating.swift in Sources */,
 				BAE532C5291D2C3000C8DEA6 /* QuantityButton.swift in Sources */,
+				BAE532CB291D34E800C8DEA6 /* PreviewMe.swift in Sources */,
 				BAE532B82917F95900C8DEA6 /* ShapeManager.swift in Sources */,
 				BAE532C3291D2C0100C8DEA6 /* AddToCartButton.swift in Sources */,
 				BAE532B32913F1A100C8DEA6 /* Color+Extension.swift in Sources */,

@@ -11,8 +11,13 @@ struct ItemView: View {
     var body: some View {
         GeometryReader { metrics in
             NavigationView {
-                ZStack {
-                    Color.background
+                ZStack(alignment: .top) {
+                    Color.background.overlay {
+                        Circle()
+                            .foregroundColor(.primaryColor)
+                            .frame(width: 600, height: 600)
+                            .offset(x: 0, y: -450)
+                    }
                     VStack {
                         // TODO: Salad image
                         ZStack {}
@@ -149,6 +154,8 @@ private struct IngredientCard: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView()
+        PreviewMe {
+            ItemView()
+        }
     }
 }
