@@ -21,6 +21,9 @@
 		BAE532B62917F63700C8DEA6 /* PaddingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532B52917F63700C8DEA6 /* PaddingManager.swift */; };
 		BAE532B82917F95900C8DEA6 /* ShapeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532B72917F95900C8DEA6 /* ShapeManager.swift */; };
 		BAE532BB2917FB2F00C8DEA6 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532BA2917FB2F00C8DEA6 /* Rating.swift */; };
+		BAE532C1291D2B7500C8DEA6 /* RoundArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532C0291D2B7500C8DEA6 /* RoundArrowButton.swift */; };
+		BAE532C3291D2C0100C8DEA6 /* AddToCartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532C2291D2C0100C8DEA6 /* AddToCartButton.swift */; };
+		BAE532C5291D2C3000C8DEA6 /* QuantityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532C4291D2C3000C8DEA6 /* QuantityButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		BAE532B52917F63700C8DEA6 /* PaddingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingManager.swift; sourceTree = "<group>"; };
 		BAE532B72917F95900C8DEA6 /* ShapeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeManager.swift; sourceTree = "<group>"; };
 		BAE532BA2917FB2F00C8DEA6 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		BAE532C0291D2B7500C8DEA6 /* RoundArrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundArrowButton.swift; sourceTree = "<group>"; };
+		BAE532C2291D2C0100C8DEA6 /* AddToCartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartButton.swift; sourceTree = "<group>"; };
+		BAE532C4291D2C3000C8DEA6 /* QuantityButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,9 +158,20 @@
 		BAE532B92917FB2400C8DEA6 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				BAE532BF291D2B6600C8DEA6 /* Button */,
 				BAE532BA2917FB2F00C8DEA6 /* Rating.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		BAE532BF291D2B6600C8DEA6 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				BAE532C0291D2B7500C8DEA6 /* RoundArrowButton.swift */,
+				BAE532C2291D2C0100C8DEA6 /* AddToCartButton.swift */,
+				BAE532C4291D2C3000C8DEA6 /* QuantityButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,10 +335,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAE532BB2917FB2F00C8DEA6 /* Rating.swift in Sources */,
+				BAE532C5291D2C3000C8DEA6 /* QuantityButton.swift in Sources */,
 				BAE532B82917F95900C8DEA6 /* ShapeManager.swift in Sources */,
+				BAE532C3291D2C0100C8DEA6 /* AddToCartButton.swift in Sources */,
 				BAE532B32913F1A100C8DEA6 /* Color+Extension.swift in Sources */,
 				BAE532B62917F63700C8DEA6 /* PaddingManager.swift in Sources */,
 				BAE5329C2913ECD900C8DEA6 /* ItemView.swift in Sources */,
+				BAE532C1291D2B7500C8DEA6 /* RoundArrowButton.swift in Sources */,
 				BAE5329A2913ECD900C8DEA6 /* SaladFoodOrderingAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
