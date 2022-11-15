@@ -65,14 +65,13 @@ struct ItemView: View {
                                 .fontWeight(.bold)
                             
                             // Ingredients
-                            HStack {
-                                WrappingItems(tags: [
-                                AnyView(IngredientCard(ingredientName: "foo")),
-                                AnyView(IngredientCard(ingredientName: "bar")),
-                                AnyView(IngredientCard(ingredientName: "buzz"))
-                                ])
+                            ScrollView(.horizontal) {
+                                HStack {
+                                    IngredientCard(ingredientName: "foo")
+                                    IngredientCard(ingredientName: "bar")
+                                    IngredientCard(ingredientName: "buzz")
+                                }
                             }
-                            Spacer()
                         }
                         
                         HStack {
