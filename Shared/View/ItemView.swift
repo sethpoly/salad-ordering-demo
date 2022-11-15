@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ItemView: View {
+    @StateObject var viewModel = ItemViewModel()
+    
     var body: some View {
         GeometryReader { metrics in
             NavigationView {
@@ -18,70 +20,7 @@ struct ItemView: View {
                             .frame(width: 600, height: 600)
                             .offset(x: 0, y: -450)
                     }
-                    VStack {
-                        // TODO: Salad image
-                        ZStack {}
-                            .frame(width: 200, height: 200)
-                            .background(Color.red)
-                        
-                        // TODO: Buttons/item name
-                        HStack {
-                            RoundArrowButton(isRightFacing: false) {
-                                // TODO: Prev item
-                            }
-                            Spacer()
-                            // Item name
-                            Text("Item name")
-                                .font(.title)
-                                .fontWeight(.bold)
-                            Spacer()
-                            RoundArrowButton(isRightFacing: true) {
-                                // TODO: Next item
-                            }
-                        }
-                        
-                        // Review stars/count
-                        HStack {
-                            Rating(
-                                rating: .constant(5),
-                                label: "110 reviews"
-                            )
-                            Spacer()
-                        }
-                        
-                        // Description
-                        Text(
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        )
-                        .font(.subheadline)
-                        .foregroundColor(.secondaryVariant)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        // Price/Ingredients
-                        HStack(spacing: 24) {
-                            // Price
-                            Text("$7.89")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                            
-                            // Ingredients
-                            ScrollView(.horizontal) {
-                                HStack {
-                                    IngredientCard(ingredientName: "foo")
-                                    IngredientCard(ingredientName: "bar")
-                                    IngredientCard(ingredientName: "buzz")
-                                }
-                            }
-                        }
-                        
-                        HStack {
-                            AddToCartButton(onClick: {})
-                                .frame(maxWidth: metrics.size.width * 0.6)
-
-                            QuantityButton()
-                                .frame(maxWidth: metrics.size.width * 0.3)
-                        }
-                    }
+                    
                 }
                 .padding(PaddingManager.viewPadding)
                 .toolbar {
@@ -103,6 +42,79 @@ struct ItemView: View {
                             // TODO: Open cart
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+private struct ItemDetailView: View {
+    let item: Item
+    
+    var body: some View {
+        GeometryReader { metrics in
+            VStack {
+                // TODO: Salad image
+                ZStack {}
+                    .frame(width: 200, height: 200)
+                    .background(Color.red)
+                
+                // Buttons/item name
+                HStack {
+                    RoundArrowButton(isRightFacing: false) {
+                        // TODO: Prev item
+                    }
+                    Spacer()
+                    // Item name
+                    Text("Item name")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    Spacer()
+                    RoundArrowButton(isRightFacing: true) {
+                        // TODO: Next item
+                    }
+                }
+                
+                // Review stars/count
+                HStack {
+                    Rating(
+                        rating: .constant(5),
+                        label: "110 reviews"
+                    )
+                    Spacer()
+                }
+                
+                // Description
+                Text(
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                )
+                .font(.subheadline)
+                .foregroundColor(.secondaryVariant)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                // Price/Ingredients
+                HStack(spacing: 24) {
+                    // Price
+                    Text("$7.89")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    
+                    // Ingredients
+                    ScrollView(.horizontal) {
+                        HStack {
+                            IngredientCard(ingredientName: "foo")
+                            IngredientCard(ingredientName: "bar")
+                            IngredientCard(ingredientName: "buzz")
+                        }
+                    }
+                }
+                
+                HStack {
+                    AddToCartButton(onClick: {})
+                        .frame(maxWidth: metrics.size.width * 0.6)
+
+                    QuantityButton()
+                        .frame(maxWidth: metrics.size.width * 0.3)
                 }
             }
         }

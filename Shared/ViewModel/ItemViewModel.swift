@@ -11,7 +11,8 @@ class ItemViewModel: ObservableObject {
     @Published private(set) var items: [Item] = Item.getDummyItems()
 }
 
-struct Item {
+struct Item: Equatable {
+    let id: Int
     let name: String
     let description: String
     let price: Double
@@ -25,6 +26,7 @@ struct Item {
         for i in 0...3 {
             items.append(
                 Item(
+                    id: i,
                     name: "Item \(i)",
                     description: "description \(i)",
                     price: Double(i) * 5.0,

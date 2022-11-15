@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA8797F32923CF5F0031A400 /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8797F22923CF5F0031A400 /* WheelView.swift */; };
 		BAE5328B2913ECD900C8DEA6 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5328A2913ECD900C8DEA6 /* Tests_iOS.swift */; };
 		BAE5328D2913ECD900C8DEA6 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5328C2913ECD900C8DEA6 /* Tests_iOSLaunchTests.swift */; };
 		BAE5329A2913ECD900C8DEA6 /* SaladFoodOrderingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532722913ECD600C8DEA6 /* SaladFoodOrderingAppApp.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA8797F22923CF5F0031A400 /* WheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
 		BAE532722913ECD600C8DEA6 /* SaladFoodOrderingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaladFoodOrderingAppApp.swift; sourceTree = "<group>"; };
 		BAE532732913ECD600C8DEA6 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		BAE532742913ECD900C8DEA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				BAE532BF291D2B6600C8DEA6 /* Button */,
 				BAE532BA2917FB2F00C8DEA6 /* Rating.swift */,
+				BA8797F22923CF5F0031A400 /* WheelView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				BAE532B32913F1A100C8DEA6 /* Color+Extension.swift in Sources */,
 				BAE532B62917F63700C8DEA6 /* PaddingManager.swift in Sources */,
 				BAE5329C2913ECD900C8DEA6 /* ItemView.swift in Sources */,
+				BA8797F32923CF5F0031A400 /* WheelView.swift in Sources */,
 				BAE532C1291D2B7500C8DEA6 /* RoundArrowButton.swift in Sources */,
 				BAE5329A2913ECD900C8DEA6 /* SaladFoodOrderingAppApp.swift in Sources */,
 			);
