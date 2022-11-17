@@ -11,7 +11,7 @@ class ItemViewModel: ObservableObject {
     @Published private(set) var items: [Item] = Item.getDummyItems()
 }
 
-struct Item: Equatable {
+struct Item: Equatable, Hashable {
     let id: Int
     let name: String
     let description: String

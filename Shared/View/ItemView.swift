@@ -9,38 +9,52 @@ import SwiftUI
 
 struct ItemView: View {
     @StateObject var viewModel = ItemViewModel()
+    @State var chosenIndex = 0
+    @State var wheelDegree = 90.0
     
     var body: some View {
-        GeometryReader { metrics in
-            NavigationView {
-                ZStack(alignment: .top) {
-                    Color.background.overlay {
-                        Circle()
-                            .foregroundColor(.primaryColor)
-                            .frame(width: 600, height: 600)
-                            .offset(x: 0, y: -450)
-                    }
-                    
+        NavigationView {
+            ZStack(alignment: .top) {
+                Color.background.overlay {
+                    Circle()
+                        .foregroundColor(.primaryColor)
+                        .frame(width: 600, height: 600)
+                        .offset(x: 0, y: -450)
                 }
-                .padding(PaddingManager.viewPadding)
-                .toolbar {
-                    // Hamburger menu
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                        } label: {
-                            Image(systemName: "line.3.horizontal")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 32, height: 32)
-                                .foregroundColor(.onPrimary)
-                        }
+                
+                VStack(spacing: 0) {
+                WheelView(
+                    chosenIndex: $chosenIndex,
+                    degree: $wheelDegree,
+                    array: viewModel.items,
+                    circleSize: 500
+                ) { item in
+                    ZStack {}
+                        .frame(width: 150, height: 150)
+                        .background(Color.red)
+                }
+                .offset(x: 0, y: -250)
+                    ItemDetailView(item: viewModel.items[chosenIndex])
+                }
+            }
+            .padding(PaddingManager.viewPadding)
+            .toolbar {
+                // Hamburger menu
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                    } label: {
+                        Image(systemName: "line.3.horizontal")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32, height: 32)
+                            .foregroundColor(.onPrimary)
                     }
-                    
-                    // Open cart button
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        OpenCartButton(currentItemCount: 1) {
-                            // TODO: Open cart
-                        }
+                }
+                
+                // Open cart button
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    OpenCartButton(currentItemCount: 1) {
+                        // TODO: Open cart
                     }
                 }
             }
@@ -55,9 +69,9 @@ private struct ItemDetailView: View {
         GeometryReader { metrics in
             VStack {
                 // TODO: Salad image
-                ZStack {}
-                    .frame(width: 200, height: 200)
-                    .background(Color.red)
+//                ZStack {}
+//                    .frame(width: 200, height: 200)
+//                    .background(Color.red)
                 
                 // Buttons/item name
                 HStack {

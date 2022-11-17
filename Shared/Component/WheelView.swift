@@ -12,19 +12,14 @@ enum Direction {
     case right
 }
 
-struct WheelView: View {
-    // Circle Radius
+struct WheelView<Content: View>: View {
     @State var radius : Double = 150
-    // Direction of swipe
     @State var direction = Direction.left
-    // index of the number at the bottom of the circle
-    @State var chosenIndex = 0
-    // degree of circle and hue
+    @Binding var chosenIndex: Int
     @Binding var degree : Double
-//    @State var degree = 90.0
     let array : [Item]
     let circleSize : Double
-
+    let content: (Item) -> Content
     
     func moveWheel() {
         withAnimation(.spring()) {
@@ -60,17 +55,16 @@ struct WheelView: View {
                 }
             // MARK: WHEEL STACK - BEGINNING
             ZStack {
-                Circle().fill(EllipticalGradient(colors: [.orange,.yellow]))
-                    .hueRotation(Angle(degrees: degree))
+                //Circle().fill(EllipticalGradient(colors: [.orange,.yellow]))
+                //    .hueRotation(Angle(degrees: degree))
 
-                ForEach(0 ..< array.count) { index in
+                ForEach(0..<array.count, id: \.self) { index in
                     let angle = Double(index) * anglePerCount
                     let xOffset = CGFloat(radius * cos(angle))
                     let yOffset = CGFloat(radius * sin(angle))
-                    Text("\(array[index].name)")
+                    content(array[index])
                         .rotationEffect(Angle(degrees: -degree))
                         .offset(x: xOffset, y: yOffset )
-                        .font(Font.system(chosenIndex == index ? .title : .body, design: .monospaced))
                 }
             }
             .rotationEffect(Angle(degrees: degree))
@@ -80,15 +74,21 @@ struct WheelView: View {
             }
             // MARK: WHEEL STACK - END
         }
-        .frame(width: circleSize, height: circleSize)
+        //.frame(width: circleSize, height: circleSize)
     }
 }
 
 private struct WheelView_Stateful: View {
     @State var degree = 90.0
+    @State var chosenIndex = 0
     
     var body: some View {
-        WheelView(degree: $degree, array: Item.getDummyItems(), circleSize: 400)
+        WheelView(chosenIndex: $chosenIndex, degree: $degree,array: Item.getDummyItems(), circleSize: 400) { item in
+            VStack {
+            Text(item.name)
+                Text(item.description)
+            }
+        }
     }
 }
 
