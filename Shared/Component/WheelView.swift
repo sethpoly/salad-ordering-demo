@@ -55,16 +55,14 @@ struct WheelView<Content: View>: View {
                 }
             // MARK: WHEEL STACK - BEGINNING
             ZStack {
-                //Circle().fill(EllipticalGradient(colors: [.orange,.yellow]))
-                //    .hueRotation(Angle(degrees: degree))
-
                 ForEach(0..<array.count, id: \.self) { index in
                     let angle = Double(index) * anglePerCount
                     let xOffset = CGFloat(radius * cos(angle))
                     let yOffset = CGFloat(radius * sin(angle))
                     content(array[index])
                         .rotationEffect(Angle(degrees: -degree))
-                        .offset(x: xOffset, y: yOffset )
+                        .offset(x: xOffset, y: yOffset)
+                        .opacity(index == chosenIndex ? 1.0 : 0.0)
                 }
             }
             .rotationEffect(Angle(degrees: degree))
@@ -74,7 +72,6 @@ struct WheelView<Content: View>: View {
             }
             // MARK: WHEEL STACK - END
         }
-        //.frame(width: circleSize, height: circleSize)
     }
 }
 

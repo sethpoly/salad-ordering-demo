@@ -29,6 +29,7 @@ struct ItemView: View {
                     array: viewModel.items,
                     circleSize: 500
                 ) { item in
+                    // TODO: Item image
                     ZStack {}
                         .frame(width: 150, height: 150)
                         .background(Color.red)
@@ -68,11 +69,6 @@ private struct ItemDetailView: View {
     var body: some View {
         GeometryReader { metrics in
             VStack {
-                // TODO: Salad image
-//                ZStack {}
-//                    .frame(width: 200, height: 200)
-//                    .background(Color.red)
-                
                 // Buttons/item name
                 HStack {
                     RoundArrowButton(isRightFacing: false) {
