@@ -14,7 +14,7 @@ struct SlideOutCart: View {
             Color.onPrimary.ignoresSafeArea()
             VStack(alignment: .center) {
                 // MARK: Close button
-                CloseButton(onClick: {})
+                ImageCircleButton (onClick: {}, imageSystemName: "xmark")
                 Text("Your Order")
                     .font(.headline)
                     .foregroundColor(.background)
@@ -24,24 +24,13 @@ struct SlideOutCart: View {
                 // MARK: Total/Total price
                 CartTotal(total: 42.6)
                 // TODO: Checkmark
+                ImageCircleButton(
+                    onClick: {},
+                    imageSystemName: "checkmark",
+                    foregroundColor: .primaryVariant,
+                    backgroundColor: .background
+                )
             }
-        }
-    }
-}
-
-struct CloseButton: View {
-    let onClick: () -> Void
-    var foregroundColor: Color = .onSecondary
-    var backgroundColor: Color = .primaryVariant
-    
-    var body: some View {
-        Button(action: onClick) {
-            Image(systemName: "xmark")
-                .padding()
-                .foregroundColor(foregroundColor)
-                .background(backgroundColor)
-                .clipShape(Circle())
-                .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 5)
         }
     }
 }
