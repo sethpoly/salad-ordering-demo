@@ -35,7 +35,15 @@ struct ItemView: View {
                         .background(Color.red)
                 }
                 .offset(x: 0, y: -250)
-                    ItemDetailView(item: viewModel.items[chosenIndex])
+                    ItemDetailView(
+                        item: viewModel.items[chosenIndex],
+                        onItemNext: {
+                            cycleItems(isNext: true)
+                        },
+                        onItemPrevious: {
+                            cycleItems(isNext: false)
+                        }
+                    )
                 }
             }
             .padding(PaddingManager.viewPadding)
@@ -61,28 +69,36 @@ struct ItemView: View {
             }
         }
     }
+    
+    func cycleItems(isNext: Bool) {
+        withAnimation(.spring()) {
+            wheelDegree += isNext ? Double(360/viewModel.items.count) : -Double(360/viewModel.items.count)
+            chosenIndex = viewModel.items.cycleArrayToIndex(currentIndex: chosenIndex, isNext: isNext)
+        }
+    }
 }
 
 private struct ItemDetailView: View {
     let item: Item
+    let onItemNext: () -> Void
+    let onItemPrevious: () -> Void
     
     var body: some View {
         GeometryReader { metrics in
             VStack {
                 // Buttons/item name
                 HStack {
-                    RoundArrowButton(isRightFacing: false) {
-                        // TODO: Prev item
-                    }
+                    // Prev item
+                    RoundArrowButton(isRightFacing: false, onClick: onItemPrevious)
+            
                     Spacer()
                     // Item name
                     Text("Item name")
                         .font(.title)
                         .fontWeight(.bold)
                     Spacer()
-                    RoundArrowButton(isRightFacing: true) {
-                        // TODO: Next item
-                    }
+                    // Next item
+                    RoundArrowButton(isRightFacing: true, onClick: onItemNext)
                 }
                 
                 // Review stars/count
