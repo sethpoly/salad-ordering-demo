@@ -93,7 +93,7 @@ private struct ItemDetailView: View {
             
                     Spacer()
                     // Item name
-                    Text("Item name")
+                    Text(item.name)
                         .font(.title)
                         .fontWeight(.bold)
                     Spacer()
@@ -104,43 +104,43 @@ private struct ItemDetailView: View {
                 // Review stars/count
                 HStack {
                     Rating(
-                        rating: .constant(5),
-                        label: "110 reviews"
+                        rating: .constant(item.rating),
+                        label: "\(item.reviewCount) reviews"
                     )
                     Spacer()
                 }
                 
                 // Description
-                Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                )
-                .font(.subheadline)
-                .foregroundColor(.secondaryVariant)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                Text(item.description)
+                    .font(.subheadline)
+                    .foregroundColor(.secondaryVariant)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
                 // Price/Ingredients
                 HStack(spacing: 24) {
                     // Price
-                    Text("$7.89")
+                    Text(item.price.currencyFormat)
                         .font(.title2)
                         .fontWeight(.bold)
                     
                     // Ingredients
                     ScrollView(.horizontal) {
                         HStack {
-                            IngredientCard(ingredientName: "foo")
-                            IngredientCard(ingredientName: "bar")
-                            IngredientCard(ingredientName: "buzz")
+                            ForEach(Array(item.nutrientData.keys), id: \.self) { key in
+                                IngredientCard(ingredientName: "\(item.nutrientData[key] ?? 0) \(key)")
+                            }
                         }
                     }
                 }
                 
+                Spacer()
+                
                 HStack {
                     AddToCartButton(onClick: {})
-                        .frame(maxWidth: metrics.size.width * 0.6)
+                        .frame(maxWidth: metrics.size.width * 0.65)
 
                     QuantityButton()
-                        .frame(maxWidth: metrics.size.width * 0.3)
+                        .frame(maxWidth: metrics.size.width * 0.35)
                 }
             }
         }
