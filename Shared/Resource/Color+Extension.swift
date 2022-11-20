@@ -13,6 +13,7 @@ extension Color {
     static let background = Color("background")
     static let onBackground = Color("onBackground")
     static let primaryColor = Color("primary")
+    static let primaryVariant = Color("primaryVariant")
     static let onPrimary = Color("onPrimary")
     static let secondaryColor = Color("secondaryColor")
     static let onSecondary = Color("onSecondary")
