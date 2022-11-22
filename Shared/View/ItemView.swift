@@ -11,9 +11,11 @@ struct ItemView: View {
     @StateObject var viewModel = ItemViewModel()
     @State var chosenIndex = 0
     @State var wheelDegree = 90.0
+    @State private var showCart = false
     
     var body: some View {
         NavigationView {
+            ZStack {
             ZStack(alignment: .top) {
                 Color.background.overlay {
                     Circle()
@@ -23,27 +25,27 @@ struct ItemView: View {
                 }
                 
                 VStack(spacing: 0) {
-                WheelView(
-                    chosenIndex: $chosenIndex,
-                    degree: $wheelDegree,
-                    array: viewModel.items,
-                    circleSize: 500
-                ) { item in
-                    // TODO: Item image
-                    ZStack {}
-                        .frame(width: 150, height: 150)
-                        .background(Color.red)
-                }
-                .offset(x: 0, y: -250)
-                    ItemDetailView(
-                        item: viewModel.items[chosenIndex],
-                        onItemNext: {
-                            cycleItems(isNext: true)
-                        },
-                        onItemPrevious: {
-                            cycleItems(isNext: false)
-                        }
-                    )
+                    WheelView(
+                        chosenIndex: $chosenIndex,
+                        degree: $wheelDegree,
+                        array: viewModel.items,
+                        circleSize: 500
+                    ) { item in
+                        // TODO: Item image
+                        ZStack {}
+                            .frame(width: 150, height: 150)
+                            .background(Color.red)
+                    }
+                    .offset(x: 0, y: -250)
+                        ItemDetailView(
+                            item: viewModel.items[chosenIndex],
+                            onItemNext: {
+                                cycleItems(isNext: true)
+                            },
+                            onItemPrevious: {
+                                cycleItems(isNext: false)
+                            }
+                        )
                 }
             }
             .padding(PaddingManager.viewPadding)
@@ -62,9 +64,20 @@ struct ItemView: View {
                 
                 // Open cart button
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    OpenCartButton(currentItemCount: 1) {
-                        // TODO: Open cart
+                    if !showCart {
+                        OpenCartButton(currentItemCount: 1) {
+                            toggleCartVisibility()
+                        }
                     }
+                }
+            }
+                if showCart {
+                    SlideOutCart(
+                        itemsInCart: .constant([]),
+                        width: 75,
+                        onDismiss: toggleCartVisibility
+                    )
+                    .transition(.move(edge: .trailing))
                 }
             }
         }
@@ -74,6 +87,12 @@ struct ItemView: View {
         withAnimation(.spring()) {
             wheelDegree += isNext ? Double(360/viewModel.items.count) : -Double(360/viewModel.items.count)
             chosenIndex = viewModel.items.cycleArrayToIndex(currentIndex: chosenIndex, isNext: isNext)
+        }
+    }
+    
+    func toggleCartVisibility() {
+        withAnimation {
+            showCart.toggle()
         }
     }
 }

@@ -9,17 +9,25 @@ import SwiftUI
 
 struct SlideOutCart: View {
     @Binding var itemsInCart: [Item]
+    let width: CGFloat
+    let onDismiss: () -> Void
     
     var body: some View {
+        HStack {
+            Spacer()
+                .onTapGesture {
+                    onDismiss()
+                }
         ZStack {
             Color.onPrimary.ignoresSafeArea()
             VStack(alignment: .center) {
                 // MARK: Close button
-                ImageCircleButton (onClick: {}, imageSystemName: "xmark")
-                Text("Your Order")
+                ImageCircleButton (onClick: onDismiss, imageSystemName: "xmark")
+                Text("Your\nOrder")
                     .font(.headline)
                     .foregroundColor(.background)
                     .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
                     
                 // TODO: Cart items (max 3)
                 ScrollView {
@@ -47,6 +55,10 @@ struct SlideOutCart: View {
                     backgroundColor: .background
                 )
             }
+        }
+        .frame(width: self.width)
+        .offset(x: 0, y: 0)
+        .zIndex(5.0)
         }
     }
 }
@@ -97,7 +109,7 @@ private struct SlideOutChart_Stateful: View {
     @State var itemsInCart = Item.getDummyItems()
     
     var body: some View {
-        SlideOutCart(itemsInCart: $itemsInCart)
+        SlideOutCart(itemsInCart: $itemsInCart, width: 75, onDismiss: {})
     }
 }
 
