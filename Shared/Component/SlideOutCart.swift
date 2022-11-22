@@ -26,7 +26,7 @@ struct SlideOutCart: View {
                     ZStack(){}.frame(height: 2)
                     ForEach(itemsInCart.indices, id: \.self) { i in
                         CartItem(item: itemsInCart[i], onDelete: {
-                            withAnimation(.default) {
+                            withAnimation(.linear) {
                                 print(self.itemsInCart.count) // SwiftUI bug
                                 self.itemsInCart.remove(at: i)
                             }
@@ -34,6 +34,7 @@ struct SlideOutCart: View {
                         .frame(width: 72, height: 72)
                     }
                 }
+                .modifier(ScrollGradient())
                 
                 // MARK: Total/Total price
                 CartTotal(total: 42.6)

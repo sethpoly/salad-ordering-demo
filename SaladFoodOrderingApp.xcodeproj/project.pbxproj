@@ -14,6 +14,7 @@
 		BAD05843292A8E4A00E9CA93 /* SlideOutCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD05842292A8E4A00E9CA93 /* SlideOutCart.swift */; };
 		BAD05845292AD69200E9CA93 /* ImageCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD05844292AD69200E9CA93 /* ImageCircleButton.swift */; };
 		BAD05847292AE14500E9CA93 /* Tappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD05846292AE14500E9CA93 /* Tappable.swift */; };
+		BAD05849292D035600E9CA93 /* ScrollGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD05848292D035600E9CA93 /* ScrollGradient.swift */; };
 		BAE5328B2913ECD900C8DEA6 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5328A2913ECD900C8DEA6 /* Tests_iOS.swift */; };
 		BAE5328D2913ECD900C8DEA6 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5328C2913ECD900C8DEA6 /* Tests_iOSLaunchTests.swift */; };
 		BAE5329A2913ECD900C8DEA6 /* SaladFoodOrderingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532722913ECD600C8DEA6 /* SaladFoodOrderingAppApp.swift */; };
@@ -61,6 +62,7 @@
 		BAD05842292A8E4A00E9CA93 /* SlideOutCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOutCart.swift; sourceTree = "<group>"; };
 		BAD05844292AD69200E9CA93 /* ImageCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCircleButton.swift; sourceTree = "<group>"; };
 		BAD05846292AE14500E9CA93 /* Tappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tappable.swift; sourceTree = "<group>"; };
+		BAD05848292D035600E9CA93 /* ScrollGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollGradient.swift; sourceTree = "<group>"; };
 		BAE532722913ECD600C8DEA6 /* SaladFoodOrderingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaladFoodOrderingAppApp.swift; sourceTree = "<group>"; };
 		BAE532732913ECD600C8DEA6 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		BAE532742913ECD900C8DEA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				BA8797F22923CF5F0031A400 /* WheelView.swift */,
 				BAD05842292A8E4A00E9CA93 /* SlideOutCart.swift */,
 				BAD05846292AE14500E9CA93 /* Tappable.swift */,
+				BAD05848292D035600E9CA93 /* ScrollGradient.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				BAE532BB2917FB2F00C8DEA6 /* Rating.swift in Sources */,
 				BAE532C5291D2C3000C8DEA6 /* QuantityButton.swift in Sources */,
 				BAE532CB291D34E800C8DEA6 /* PreviewMe.swift in Sources */,
+				BAD05849292D035600E9CA93 /* ScrollGradient.swift in Sources */,
 				BAD05847292AE14500E9CA93 /* Tappable.swift in Sources */,
 				BAD05843292A8E4A00E9CA93 /* SlideOutCart.swift in Sources */,
 				BAD05845292AD69200E9CA93 /* ImageCircleButton.swift in Sources */,
