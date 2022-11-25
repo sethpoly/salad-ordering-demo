@@ -24,29 +24,30 @@ struct ItemView: View {
                             .offset(x: 0, y: -450)
                     }
                     
-                    VStack(spacing: 0) {
-                        WheelView(
-                            chosenIndex: $chosenIndex,
-                            degree: $wheelDegree,
-                            array: viewModel.items,
-                            circleSize: 500
-                        ) { item in
-                            // TODO: Item image
-                            ZStack {}
-                                .frame(width: 150, height: 150)
-                                .background(Color.red)
-                        }
-                        .offset(x: 0, y: -250)
-                        ItemDetailView(
-                            item: viewModel.items[chosenIndex],
-                            onItemNext: {
-                                cycleItems(isNext: true)
-                            },
-                            onItemPrevious: {
-                                cycleItems(isNext: false)
-                            }
-                        )
+                    WheelView(
+                        chosenIndex: $chosenIndex,
+                        degree: $wheelDegree,
+                        array: viewModel.items,
+                        circleSize: 500
+                    ) { item in
+                        // TODO: Item image
+                        Image(item.imageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 200)
                     }
+                    .offset(x: 0, y: -260)
+                    
+                    ItemDetailView(
+                        item: viewModel.items[chosenIndex],
+                        onItemNext: {
+                            cycleItems(isNext: true)
+                        },
+                        onItemPrevious: {
+                            cycleItems(isNext: false)
+                        }
+                    )
+                    .offset(x: 0, y: 150)
                 }
                 .toolbar {
                     // Hamburger menu
@@ -153,7 +154,7 @@ private struct ItemDetailView: View {
                     }
                 }
                 
-                Spacer()
+                //Spacer()
                 
                 HStack {
                     AddToCartButton(onClick: {})

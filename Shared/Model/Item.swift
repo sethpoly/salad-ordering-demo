@@ -25,7 +25,7 @@ struct Item: Equatable, Hashable {
     
     static func getDummyItems() -> [Item] {
         var items: [Item] = []
-        for i in 0...8 {
+        for i in 1...4 {
             items.append(
                 Item(
                     id: i,
@@ -36,7 +36,7 @@ struct Item: Equatable, Hashable {
                     price: Double(i) * 5.3,
                     rating: Int.random(in: 1...5),
                     reviewCount: Int.random(in: 1...200),
-                    imageName: "",
+                    imageName: "salad\(i)",
                     nutrientData: [
                         .calories: 120,
                         .sugars: 30,
