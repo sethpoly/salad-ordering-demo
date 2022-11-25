@@ -13,7 +13,7 @@ struct SlideOutCart: View {
     let onDismiss: () -> Void
     
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             ZStack {
                 Spacer()
             }
@@ -22,46 +22,53 @@ struct SlideOutCart: View {
             .onTapGesture {
                 onDismiss()
             }
-        ZStack {
-            Color.onPrimary.ignoresSafeArea()
-            VStack(alignment: .center) {
-                // MARK: Close button
-                ImageCircleButton (onClick: onDismiss, imageSystemName: "xmark")
-                Text("Your\nOrder")
-                    .font(.headline)
-                    .foregroundColor(.background)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
+            ZStack(alignment: .top) {
+                Color.onPrimary.ignoresSafeArea()
+                VStack(alignment: .center) {
+                    // MARK: Close button
+                    ImageCircleButton (onClick: onDismiss, imageSystemName: "xmark")
+                    Text("Your\nOrder")
+                        .font(.headline)
+                        .foregroundColor(.background)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
                     
-                // TODO: Cart items (max 3)
-                ScrollView {
-                    ZStack(){}.frame(height: 2)
-                    ForEach(itemsInCart.indices, id: \.self) { i in
-                        CartItem(item: itemsInCart[i], onDelete: {
-                            withAnimation(.linear) {
-                                print(self.itemsInCart.count) // SwiftUI bug
-                                self.itemsInCart.remove(at: i)
+                    // TODO: Cart items (max 3)
+                    if itemsInCart.isEmpty {
+                        Spacer()
+                    } else {
+                        ScrollView {
+                            ZStack(){}.frame(height: 2)
+                            ForEach(itemsInCart.indices, id: \.self) { i in
+                                CartItem(item: itemsInCart[i], onDelete: {
+                                    withAnimation(.linear) {
+                                        print(self.itemsInCart.count) // SwiftUI bug
+                                        self.itemsInCart.remove(at: i)
+                                    }
+                                })
+                                .frame(width: 72, height: 72)
                             }
-                        })
-                        .frame(width: 72, height: 72)
+                        }
+                        .modifier(ScrollGradient())
                     }
+                    
+                    VStack {
+                        // MARK: Total/Total price
+                        CartTotal(total: 42.6)
+                        
+                        // MARK: Checkmark
+                        ImageCircleButton(
+                            onClick: {},
+                            imageSystemName: "checkmark",
+                            foregroundColor: .primaryVariant,
+                            backgroundColor: .background
+                        )
+                    }
+                    .padding(.bottom, 12)
                 }
-                .modifier(ScrollGradient())
-                
-                // MARK: Total/Total price
-                CartTotal(total: 42.6)
-                
-                // MARK: Checkmark
-                ImageCircleButton(
-                    onClick: {},
-                    imageSystemName: "checkmark",
-                    foregroundColor: .primaryVariant,
-                    backgroundColor: .background
-                )
             }
-        }
-        .frame(width: self.width)
-        .offset(x: 0, y: 0)
+            .frame(width: self.width)
+            .offset(x: 0, y: 0)
         }
         .zIndex(5.0)
     }
@@ -110,7 +117,7 @@ private struct CartTotal: View {
 }
 
 private struct SlideOutChart_Stateful: View {
-    @State var itemsInCart = Item.getDummyItems()
+    @State var itemsInCart = [Item]()//Item.getDummyItems()
     
     var body: some View {
         SlideOutCart(itemsInCart: $itemsInCart, width: 75, onDismiss: {})

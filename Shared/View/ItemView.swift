@@ -14,29 +14,29 @@ struct ItemView: View {
     @State private var showCart = false
     
     var body: some View {
-        NavigationView {
-            ZStack {
-            ZStack(alignment: .top) {
-                Color.background.overlay {
-                    Circle()
-                        .foregroundColor(.primaryColor)
-                        .frame(width: 600, height: 600)
-                        .offset(x: 0, y: -450)
-                }
-                
-                VStack(spacing: 0) {
-                    WheelView(
-                        chosenIndex: $chosenIndex,
-                        degree: $wheelDegree,
-                        array: viewModel.items,
-                        circleSize: 500
-                    ) { item in
-                        // TODO: Item image
-                        ZStack {}
-                            .frame(width: 150, height: 150)
-                            .background(Color.red)
+        ZStack {
+            NavigationView {
+                ZStack(alignment: .top) {
+                    Color.background.overlay {
+                        Circle()
+                            .foregroundColor(.primaryColor)
+                            .frame(width: 600, height: 600)
+                            .offset(x: 0, y: -450)
                     }
-                    .offset(x: 0, y: -250)
+                    
+                    VStack(spacing: 0) {
+                        WheelView(
+                            chosenIndex: $chosenIndex,
+                            degree: $wheelDegree,
+                            array: viewModel.items,
+                            circleSize: 500
+                        ) { item in
+                            // TODO: Item image
+                            ZStack {}
+                                .frame(width: 150, height: 150)
+                                .background(Color.red)
+                        }
+                        .offset(x: 0, y: -250)
                         ItemDetailView(
                             item: viewModel.items[chosenIndex],
                             onItemNext: {
@@ -46,39 +46,40 @@ struct ItemView: View {
                                 cycleItems(isNext: false)
                             }
                         )
-                }
-            }
-            .padding(PaddingManager.viewPadding)
-            .toolbar {
-                // Hamburger menu
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                    } label: {
-                        Image(systemName: "line.3.horizontal")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 32, height: 32)
-                            .foregroundColor(.onPrimary)
                     }
                 }
-                
-                // Open cart button
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    if !showCart {
-                        OpenCartButton(currentItemCount: 1) {
-                            toggleCartVisibility()
+                .toolbar {
+                    // Hamburger menu
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                        } label: {
+                            Image(systemName: "line.3.horizontal")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 32, height: 32)
+                                .foregroundColor(.onPrimary)
+                        }
+                    }
+                    
+                    // Open cart button
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        if !showCart {
+                            OpenCartButton(currentItemCount: 1) {
+                                toggleCartVisibility()
+                            }
                         }
                     }
                 }
+                .padding(PaddingManager.viewPadding)
             }
-                if showCart {
-                    SlideOutCart(
-                        itemsInCart: .constant([]),
-                        width: 75,
-                        onDismiss: toggleCartVisibility
-                    )
-                    .transition(.move(edge: .trailing))
-                }
+            
+            if showCart {
+                SlideOutCart(
+                    itemsInCart: .constant([]),
+                    width: 75,
+                    onDismiss: toggleCartVisibility
+                )
+                .transition(.move(edge: .trailing))
             }
         }
     }
@@ -109,7 +110,7 @@ private struct ItemDetailView: View {
                 HStack {
                     // Prev item
                     RoundArrowButton(isRightFacing: false, onClick: onItemPrevious)
-            
+                    
                     Spacer()
                     // Item name
                     Text(item.name)
@@ -157,7 +158,7 @@ private struct ItemDetailView: View {
                 HStack {
                     AddToCartButton(onClick: {})
                         .frame(maxWidth: metrics.size.width * 0.65)
-
+                    
                     QuantityButton()
                         .frame(maxWidth: metrics.size.width * 0.35)
                 }
@@ -212,11 +213,11 @@ private struct IngredientCard: View {
 
 struct WrappingItems: View {
     var tags: [AnyView]
-
+    
     @State private var totalHeight
-          = CGFloat.zero       // << variant for ScrollView/List
+    = CGFloat.zero       // << variant for ScrollView/List
     //    = CGFloat.infinity   // << variant for VStack
-
+    
     var body: some View {
         VStack {
             GeometryReader { geometry in
@@ -226,11 +227,11 @@ struct WrappingItems: View {
         .frame(height: totalHeight)// << variant for ScrollView/List
         //.frame(maxHeight: totalHeight) // << variant for VStack
     }
-
+    
     private func generateContent(in g: GeometryProxy) -> some View {
         var width = CGFloat.zero
         var height = CGFloat.zero
-
+        
         return ZStack(alignment: .topLeading) {
             ForEach(self.tags.indices, id: \.self) { i in
                 self.item(for: tags[i])
@@ -259,7 +260,7 @@ struct WrappingItems: View {
             }
         }.background(viewHeightReader($totalHeight))
     }
-
+    
     private func item(for text: AnyView) -> some View {
         text
             .padding(.all, 5)
@@ -268,7 +269,7 @@ struct WrappingItems: View {
             .foregroundColor(Color.white)
             .cornerRadius(5)
     }
-
+    
     private func viewHeightReader(_ binding: Binding<CGFloat>) -> some View {
         return GeometryReader { geometry -> Color in
             let rect = geometry.frame(in: .local)
