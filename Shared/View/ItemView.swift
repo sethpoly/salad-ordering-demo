@@ -45,6 +45,9 @@ struct ItemView: View {
                         },
                         onItemPrevious: {
                             cycleItems(isNext: false)
+                        },
+                        onAddToCart: {
+                            viewModel.addItemToCart(item: viewModel.items[chosenIndex])
                         }
                     )
                     .frame(height: metrics.size.height * 0.7)
@@ -65,8 +68,9 @@ struct ItemView: View {
                     // Open cart button
                     ToolbarItem(placement: .navigationBarTrailing) {
                         if !showCart {
-                            OpenCartButton(currentItemCount: 1) {
-                                toggleCartVisibility()
+                            OpenCartButton(
+                                currentItemCount: viewModel.itemsInCart.count) {
+                                    toggleCartVisibility()
                             }
                         }
                     }
@@ -76,7 +80,7 @@ struct ItemView: View {
             
             if showCart {
                 SlideOutCart(
-                    itemsInCart: .constant([]),
+                    itemsInCart: $viewModel.itemsInCart,
                     width: 75,
                     onDismiss: toggleCartVisibility
                 )
@@ -104,6 +108,7 @@ private struct ItemDetailView: View {
     let item: Item
     let onItemNext: () -> Void
     let onItemPrevious: () -> Void
+    let onAddToCart: () -> Void
     
     var body: some View {
         GeometryReader { metrics in
@@ -117,7 +122,7 @@ private struct ItemDetailView: View {
                     Spacer()
                     // Item name
                     Text(item.name)
-                        .font(.title)
+                        .font(.title2)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                     Spacer()
@@ -161,7 +166,7 @@ private struct ItemDetailView: View {
                     }
                 }
                     HStack {
-                    AddToCartButton(onClick: {})
+                    AddToCartButton(onClick: onAddToCart)
                         .frame(maxWidth: metrics.size.width * 0.65)
                     
                     QuantityButton()
@@ -187,15 +192,17 @@ private struct OpenCartButton: View {
                 .frame(width: 32, height: 32)
                 .foregroundColor(buttonColor)
                 .overlay {
-                    ZStack {
-                        Circle()
-                        Text(String(currentItemCount))
-                            .font(.system(size: 12))
-                            .foregroundColor(textColor)
+                    if currentItemCount != 0 {
+                        ZStack {
+                            Circle()
+                            Text(String(currentItemCount))
+                                .font(.system(size: 12))
+                                .foregroundColor(textColor)
+                        }
+                        .foregroundColor(dotColor)
+                        .frame(maxWidth: 18, maxHeight: 18)
+                        .offset(x: -14, y: -9)
                     }
-                    .foregroundColor(dotColor)
-                    .frame(maxWidth: 18, maxHeight: 18)
-                    .offset(x: -14, y: -9)
                 }
         }
     }
@@ -213,76 +220,6 @@ private struct IngredientCard: View {
             .foregroundColor(Color.black.opacity(0.8))
             .background(Color.primaryColor)
             .cornerRadius(ShapeManager.cardShape)
-    }
-}
-
-struct WrappingItems: View {
-    var tags: [AnyView]
-    
-    @State private var totalHeight
-    = CGFloat.zero       // << variant for ScrollView/List
-    //    = CGFloat.infinity   // << variant for VStack
-    
-    var body: some View {
-        VStack {
-            GeometryReader { geometry in
-                self.generateContent(in: geometry)
-            }
-        }
-        .frame(height: totalHeight)// << variant for ScrollView/List
-        //.frame(maxHeight: totalHeight) // << variant for VStack
-    }
-    
-    private func generateContent(in g: GeometryProxy) -> some View {
-        var width = CGFloat.zero
-        var height = CGFloat.zero
-        
-        return ZStack(alignment: .topLeading) {
-            ForEach(self.tags.indices, id: \.self) { i in
-                self.item(for: tags[i])
-                    .padding([.horizontal, .vertical], 4)
-                    .alignmentGuide(.leading, computeValue: { d in
-                        if (abs(width - d.width) > g.size.width)
-                        {
-                            width = 0
-                            height -= d.height
-                        }
-                        let result = width
-                        if i == self.tags.count - 1 {
-                            width = 0 //last item
-                        } else {
-                            width -= d.width
-                        }
-                        return result
-                    })
-                    .alignmentGuide(.top, computeValue: {d in
-                        let result = height
-                        if i == self.tags.count - 1 {
-                            height = 0 // last item
-                        }
-                        return result
-                    })
-            }
-        }.background(viewHeightReader($totalHeight))
-    }
-    
-    private func item(for text: AnyView) -> some View {
-        text
-            .padding(.all, 5)
-            .font(.body)
-            .background(Color.blue)
-            .foregroundColor(Color.white)
-            .cornerRadius(5)
-    }
-    
-    private func viewHeightReader(_ binding: Binding<CGFloat>) -> some View {
-        return GeometryReader { geometry -> Color in
-            let rect = geometry.frame(in: .local)
-            DispatchQueue.main.async {
-                binding.wrappedValue = rect.size.height
-            }
-            return .clear
-        }
     }
 }
 

@@ -40,13 +40,29 @@ struct Item: Equatable, Hashable {
                 ])
         })
     }
+    
+    static func fromDummyItem(dummyItem: DummyItem) -> Item {
+        return Item(
+            id: dummyItem.rawValue,
+            name: dummyItem.name,
+            description: dummyItem.description,
+            price: (Double(dummyItem.rawValue) + 2) * 5.3,
+            rating: Int.random(in: 4...5),
+            reviewCount: Int.random(in: 1...200),
+            imageName: dummyItem.imageName,
+            nutrientData: [
+                .calories: 120,
+                .sugars: 30,
+                .protein: 23
+            ])
+    }
 }
 
-enum DummyItem: CaseIterable {
-    case chickenTinga
-    case chineseChicken
-    case harvest
-    case mediterranean
+enum DummyItem: Int, CaseIterable {
+    case chickenTinga = 0
+    case chineseChicken = 1
+    case harvest = 2
+    case mediterranean = 3
     
     var name: String {
         switch self {
