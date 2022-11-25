@@ -14,10 +14,14 @@ struct SlideOutCart: View {
     
     var body: some View {
         HStack {
-            Spacer()
-                .onTapGesture {
-                    onDismiss()
-                }
+            ZStack {
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                onDismiss()
+            }
         ZStack {
             Color.onPrimary.ignoresSafeArea()
             VStack(alignment: .center) {
@@ -58,8 +62,8 @@ struct SlideOutCart: View {
         }
         .frame(width: self.width)
         .offset(x: 0, y: 0)
-        .zIndex(5.0)
         }
+        .zIndex(5.0)
     }
 }
 
