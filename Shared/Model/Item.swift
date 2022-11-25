@@ -25,7 +25,7 @@ struct Item: Equatable, Hashable {
     
     static func getDummyItems() -> [Item] {
         var items: [Item] = []
-        for i in 0...3 {
+        for i in 0...8 {
             items.append(
                 Item(
                     id: i,
