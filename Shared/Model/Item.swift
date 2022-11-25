@@ -24,27 +24,55 @@ struct Item: Equatable, Hashable {
     let nutrientData: [Nutrient: Int]
     
     static func getDummyItems() -> [Item] {
-        var items: [Item] = []
-        for i in 1...4 {
-            items.append(
-                Item(
-                    id: i,
-                    name: "Item \(i)",
-                    description:
-                        "\(i) - Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
-                        "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    price: Double(i) * 5.3,
-                    rating: Int.random(in: 1...5),
-                    reviewCount: Int.random(in: 1...200),
-                    imageName: "salad\(i)",
-                    nutrientData: [
-                        .calories: 120,
-                        .sugars: 30,
-                        .protein: 23
-                    ]
-                )
-            )
-        }
-        return items
+        return DummyItem.allCases.enumerated().map({
+            Item(
+                id: $0,
+                name: $1.name,
+                description: $1.description,
+                price: (Double($0) + 2) * 5.3,
+                rating: Int.random(in: 4...5),
+                reviewCount: Int.random(in: 1...200),
+                imageName: $1.imageName,
+                nutrientData: [
+                    .calories: 120,
+                    .sugars: 30,
+                    .protein: 23
+                ])
+        })
     }
+}
+
+enum DummyItem: CaseIterable {
+    case chickenTinga
+    case chineseChicken
+    case harvest
+    case mediterranean
+    
+    var name: String {
+        switch self {
+        case .chickenTinga: return "Chicken Tinga Bowl"
+        case .chineseChicken: return "Chinese Chicken Bowl"
+        case .harvest: return "Harvest Bowl"
+        case .mediterranean: return "Mediterranean Bowl"
+        }
+    }
+    
+    var description: String {
+        switch self {
+        case .chickenTinga: return "Warm grains or cauliflower rice drizzled with Mexican Goddess and topped with braised chicken tinga, avocado, black beans, tortilla chips, scallions, cotija cheese, marinated kale"
+        case .chineseChicken: return "Warm grains or cauliflower rice drizzled with Sesame Ginger Dressing and topped with warm roasted chicken, rainbow carrots, broccoli, pickled red onion, crispy wontons, cabbage & cilantro blend"
+        case .harvest: return "Warm grains or cauliflower rice drizzled with Creamy Lemon Herb Dressing and topped with warm roasted chicken, roasted Brussels sprouts & sweet potatoes, marinated kale, toasted pumpkin seeds"
+        case .mediterranean: return "Warm grains or cauliflower rice drizzled with Lemon Tahini Dressing and topped with warm roasted chicken, cucumber & tomato salad, local feta, Mama Lil's spicy peppers, cabbage & cilantro blend, crispy chickpeas"
+        }
+    }
+    
+    var imageName: String {
+        switch self {
+        case .chickenTinga: return "chickenTinga"
+        case .chineseChicken: return "chineseChicken"
+        case .harvest: return "harvest"
+        case .mediterranean: return "mediterranean"
+        }
+    }
+    
 }

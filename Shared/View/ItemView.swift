@@ -14,9 +14,10 @@ struct ItemView: View {
     @State private var showCart = false
     
     var body: some View {
+        GeometryReader { metrics in
         ZStack {
             NavigationView {
-                ZStack(alignment: .top) {
+                ZStack{
                     Color.background.overlay {
                         Circle()
                             .foregroundColor(.primaryColor)
@@ -30,13 +31,12 @@ struct ItemView: View {
                         array: viewModel.items,
                         circleSize: 500
                     ) { item in
-                        // TODO: Item image
                         Image(item.imageName)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: 200)
                     }
-                    .offset(x: 0, y: -260)
+                    .offset(x: 0, y: -400)
+                    .frame(height: metrics.size.height * 0.4)
                     
                     ItemDetailView(
                         item: viewModel.items[chosenIndex],
@@ -47,7 +47,7 @@ struct ItemView: View {
                             cycleItems(isNext: false)
                         }
                     )
-                    .offset(x: 0, y: 150)
+                    .frame(height: metrics.size.height * 0.7)
                 }
                 .toolbar {
                     // Hamburger menu
@@ -83,6 +83,7 @@ struct ItemView: View {
                 .transition(.move(edge: .trailing))
             }
         }
+        }
     }
     
     func cycleItems(isNext: Bool) {
@@ -106,7 +107,8 @@ private struct ItemDetailView: View {
     
     var body: some View {
         GeometryReader { metrics in
-            VStack {
+            VStack(spacing: 24) {
+                Spacer()
                 // Buttons/item name
                 HStack {
                     // Prev item
@@ -117,25 +119,30 @@ private struct ItemDetailView: View {
                     Text(item.name)
                         .font(.title)
                         .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
                     Spacer()
                     // Next item
                     RoundArrowButton(isRightFacing: true, onClick: onItemNext)
                 }
                 
-                // Review stars/count
-                HStack {
-                    Rating(
-                        rating: .constant(item.rating),
-                        label: "\(item.reviewCount) reviews"
-                    )
-                    Spacer()
+                VStack {
+                    // Review stars/count
+                    HStack {
+                        Rating(
+                            rating: .constant(item.rating),
+                            label: "\(item.reviewCount) reviews"
+                        )
+                        Spacer()
+                    }
+                    
+                    // Description
+                    Text(item.description)
+                        .font(.headline)
+                        .minimumScaleFactor(0.1)
+                        .foregroundColor(.secondaryVariant)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .lineLimit(4)
                 }
-                
-                // Description
-                Text(item.description)
-                    .font(.subheadline)
-                    .foregroundColor(.secondaryVariant)
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 
                 // Price/Ingredients
                 HStack(spacing: 24) {
@@ -153,18 +160,15 @@ private struct ItemDetailView: View {
                         }
                     }
                 }
-                
-                //Spacer()
-                
-                HStack {
+                    HStack {
                     AddToCartButton(onClick: {})
                         .frame(maxWidth: metrics.size.width * 0.65)
                     
                     QuantityButton()
                         .frame(maxWidth: metrics.size.width * 0.35)
+                    }
                 }
             }
-        }
     }
 }
 
