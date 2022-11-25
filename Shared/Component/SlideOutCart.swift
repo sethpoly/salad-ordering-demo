@@ -80,10 +80,11 @@ private struct CartItem: View {
     
     var body: some View {
         ZStack {
-            // TODO: Item Image
-            Circle().foregroundColor(.red)
+            // MARK: Item Image
+            Image(item.imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
                 .frame(width: 72)
-            Text(item.name)
             
             ZStack {
                 Circle().foregroundColor(.darkPrimaryVariant)
@@ -117,7 +118,7 @@ private struct CartTotal: View {
 }
 
 private struct SlideOutChart_Stateful: View {
-    @State var itemsInCart = [Item]()//Item.getDummyItems()
+    @State var itemsInCart = Item.getDummyItems()
     
     var body: some View {
         SlideOutCart(itemsInCart: $itemsInCart, width: 75, onDismiss: {})
