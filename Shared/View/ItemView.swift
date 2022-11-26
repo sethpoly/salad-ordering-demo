@@ -81,7 +81,7 @@ struct ItemView: View {
                 if showCart {
                     SlideOutCart(
                         itemsInCart: $viewModel.itemsInCart,
-                        width: 75,
+                        width: metrics.size.width * 0.3,
                         onDismiss: toggleCartVisibility
                     )
                     .transition(.move(edge: .trailing))
