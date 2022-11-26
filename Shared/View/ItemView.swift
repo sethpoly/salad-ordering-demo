@@ -15,78 +15,78 @@ struct ItemView: View {
     
     var body: some View {
         GeometryReader { metrics in
-        ZStack {
-            NavigationView {
-                ZStack{
-                    Color.background.overlay {
-                        Circle()
-                            .foregroundColor(.primaryColor)
-                            .frame(width: 600, height: 600)
-                            .offset(x: 0, y: -450)
-                    }
-                    
-                    WheelView(
-                        chosenIndex: $chosenIndex,
-                        degree: $wheelDegree,
-                        array: viewModel.items,
-                        circleSize: 500
-                    ) { item in
-                        Image(item.imageName)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .offset(x: 0, y: -400)
-                    .frame(height: metrics.size.height * 0.4)
-                    
-                    ItemDetailView(
-                        item: viewModel.items[chosenIndex],
-                        onItemNext: {
-                            cycleItems(isNext: true)
-                        },
-                        onItemPrevious: {
-                            cycleItems(isNext: false)
-                        },
-                        onAddToCart: {
-                            viewModel.addItemToCart(item: viewModel.items[chosenIndex])
+            ZStack {
+                NavigationView {
+                    ZStack{
+                        Color.background.overlay {
+                            Circle()
+                                .foregroundColor(.primaryColor)
+                                .frame(width: 600, height: 600)
+                                .offset(x: 0, y: -450)
                         }
-                    )
-                    .frame(height: metrics.size.height * 0.7)
-                }
-                .toolbar {
-                    // Hamburger menu
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                        } label: {
-                            Image(systemName: "line.3.horizontal")
+                        
+                        WheelView(
+                            chosenIndex: $chosenIndex,
+                            degree: $wheelDegree,
+                            array: viewModel.items,
+                            circleSize: 500
+                        ) { item in
+                            Image(item.imageName)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 32, height: 32)
-                                .foregroundColor(.onPrimary)
                         }
+                        .offset(x: 0, y: -400)
+                        .frame(height: metrics.size.height * 0.4)
+                        
+                        ItemDetailView(
+                            item: viewModel.items[chosenIndex],
+                            onItemNext: {
+                                cycleItems(isNext: true)
+                            },
+                            onItemPrevious: {
+                                cycleItems(isNext: false)
+                            },
+                            onAddToCart: {
+                                viewModel.addItemToCart(item: viewModel.items[chosenIndex])
+                            }
+                        )
+                        .frame(height: metrics.size.height * 0.7)
                     }
-                    
-                    // Open cart button
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        if !showCart {
-                            OpenCartButton(
-                                currentItemCount: viewModel.itemsInCart.count) {
-                                    toggleCartVisibility()
+                    .toolbar {
+                        // Hamburger menu
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button {
+                            } label: {
+                                Image(systemName: "line.3.horizontal")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 32, height: 32)
+                                    .foregroundColor(.onPrimary)
+                            }
+                        }
+                        
+                        // Open cart button
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            if !showCart {
+                                OpenCartButton(
+                                    currentItemCount: viewModel.itemsInCart.count) {
+                                        toggleCartVisibility()
+                                    }
                             }
                         }
                     }
+                    .padding(PaddingManager.viewPadding)
                 }
-                .padding(PaddingManager.viewPadding)
+                
+                if showCart {
+                    SlideOutCart(
+                        itemsInCart: $viewModel.itemsInCart,
+                        width: metrics.size.width * 0.3,
+                        onDismiss: toggleCartVisibility
+                    )
+                    .transition(.move(edge: .trailing))
+                }
             }
-            
-            if showCart {
-                SlideOutCart(
-                    itemsInCart: $viewModel.itemsInCart,
-                    width: 75,
-                    onDismiss: toggleCartVisibility
-                )
-                .transition(.move(edge: .trailing))
-            }
-        }
         }
     }
     
@@ -165,15 +165,15 @@ private struct ItemDetailView: View {
                         }
                     }
                 }
-                    HStack {
+                HStack {
                     AddToCartButton(onClick: onAddToCart)
                         .frame(maxWidth: metrics.size.width * 0.65)
                     
                     QuantityButton()
                         .frame(maxWidth: metrics.size.width * 0.35)
-                    }
                 }
             }
+        }
     }
 }
 
