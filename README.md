@@ -5,14 +5,14 @@ A sleek food ordering UI/UX written in pure **SwiftUI** with custom animations.
 
 #### Demo
 
-<img src="image/saladDemo.gif" width="200"><br>
+<img src="Image/saladDemo.gif" width="200"><br>
 
 The hardest part of this layout was the custom animation and ensuring it followed responsive design practices for all screen sizes.<br>
 
 *This was especially difficult since all items in the circle animation are pre-rendered in a circle formation off screen, so using a **VStack** was not possible. Thankfully, **GeometryReader** came to the rescue.*<br>
 
 #### Overall Design
-<img src="image/homeView.png" width="200"> <img src="image/cartView.png" width="200"><br>
+<img src="Image/homeView.png" width="200"> <img src="Image/cartView.png" width="200"><br>
 
 The overall UI design was alright, very few changes were made to the original mockups since this demo was created for a speed challenge from another user's figma designs. <br>
 
