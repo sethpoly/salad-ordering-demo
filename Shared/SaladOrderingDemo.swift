@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct SaladFoodOrderingAppApp: App {
+struct SaladOrderingDemo: App {
     var body: some Scene {
         WindowGroup {
             ItemView()

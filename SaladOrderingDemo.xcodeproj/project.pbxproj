@@ -20,8 +20,8 @@
 		BAD05849292D035600E9CA93 /* ScrollGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD05848292D035600E9CA93 /* ScrollGradient.swift */; };
 		BAE5328B2913ECD900C8DEA6 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5328A2913ECD900C8DEA6 /* Tests_iOS.swift */; };
 		BAE5328D2913ECD900C8DEA6 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5328C2913ECD900C8DEA6 /* Tests_iOSLaunchTests.swift */; };
-		BAE5329A2913ECD900C8DEA6 /* SaladFoodOrderingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532722913ECD600C8DEA6 /* SaladFoodOrderingAppApp.swift */; };
-		BAE5329B2913ECD900C8DEA6 /* SaladFoodOrderingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532722913ECD600C8DEA6 /* SaladFoodOrderingAppApp.swift */; };
+		BAE5329A2913ECD900C8DEA6 /* SaladOrderingDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532722913ECD600C8DEA6 /* SaladOrderingDemo.swift */; };
+		BAE5329B2913ECD900C8DEA6 /* SaladOrderingDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532722913ECD600C8DEA6 /* SaladOrderingDemo.swift */; };
 		BAE5329C2913ECD900C8DEA6 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532732913ECD600C8DEA6 /* ItemView.swift */; };
 		BAE5329D2913ECD900C8DEA6 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE532732913ECD600C8DEA6 /* ItemView.swift */; };
 		BAE5329E2913ECD900C8DEA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE532742913ECD900C8DEA6 /* Assets.xcassets */; };
@@ -69,11 +69,11 @@
 		BAD05844292AD69200E9CA93 /* ImageCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCircleButton.swift; sourceTree = "<group>"; };
 		BAD05846292AE14500E9CA93 /* Tappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tappable.swift; sourceTree = "<group>"; };
 		BAD05848292D035600E9CA93 /* ScrollGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollGradient.swift; sourceTree = "<group>"; };
-		BAE532722913ECD600C8DEA6 /* SaladFoodOrderingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaladFoodOrderingAppApp.swift; sourceTree = "<group>"; };
+		BAE532722913ECD600C8DEA6 /* SaladOrderingDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaladOrderingDemo.swift; sourceTree = "<group>"; };
 		BAE532732913ECD600C8DEA6 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		BAE532742913ECD900C8DEA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAE532792913ECD900C8DEA6 /* Salad Ordering Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Salad Ordering Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BAE5327F2913ECD900C8DEA6 /* SaladFoodOrderingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaladFoodOrderingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAE5327F2913ECD900C8DEA6 /* SaladOrderingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaladOrderingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE532862913ECD900C8DEA6 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE5328A2913ECD900C8DEA6 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
 		BAE5328C2913ECD900C8DEA6 /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 				BAE532B92917FB2400C8DEA6 /* Component */,
 				BAE532CE291D36ED00C8DEA6 /* ViewModel */,
 				BAE532B42917F4E500C8DEA6 /* View */,
-				BAE532722913ECD600C8DEA6 /* SaladFoodOrderingAppApp.swift */,
+				BAE532722913ECD600C8DEA6 /* SaladOrderingDemo.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -179,7 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				BAE532792913ECD900C8DEA6 /* Salad Ordering Demo.app */,
-				BAE5327F2913ECD900C8DEA6 /* SaladFoodOrderingApp.app */,
+				BAE5327F2913ECD900C8DEA6 /* SaladOrderingDemo.app */,
 				BAE532862913ECD900C8DEA6 /* Tests iOS.xctest */,
 				BAE532922913ECD900C8DEA6 /* Tests macOS.xctest */,
 			);
@@ -290,7 +290,7 @@
 			);
 			name = "SaladFoodOrderingApp (macOS)";
 			productName = "SaladFoodOrderingApp (macOS)";
-			productReference = BAE5327F2913ECD900C8DEA6 /* SaladFoodOrderingApp.app */;
+			productReference = BAE5327F2913ECD900C8DEA6 /* SaladOrderingDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BAE532852913ECD900C8DEA6 /* Tests iOS */ = {
@@ -438,7 +438,7 @@
 				BA8797F32923CF5F0031A400 /* WheelView.swift in Sources */,
 				BAD0583A292A6D6400E9CA93 /* Array+Extension.swift in Sources */,
 				BAE532C1291D2B7500C8DEA6 /* RoundArrowButton.swift in Sources */,
-				BAE5329A2913ECD900C8DEA6 /* SaladFoodOrderingAppApp.swift in Sources */,
+				BAE5329A2913ECD900C8DEA6 /* SaladOrderingDemo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,7 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAE5329D2913ECD900C8DEA6 /* ItemView.swift in Sources */,
-				BAE5329B2913ECD900C8DEA6 /* SaladFoodOrderingAppApp.swift in Sources */,
+				BAE5329B2913ECD900C8DEA6 /* SaladOrderingDemo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,7 +613,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.poly.SaladFoodOrderingApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.poly.SaladOrderingDemo;
 				PRODUCT_NAME = "Salad Ordering Demo";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -643,7 +643,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.poly.SaladFoodOrderingApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.poly.SaladOrderingDemo;
 				PRODUCT_NAME = "Salad Ordering Demo";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -673,8 +673,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.poly.SaladFoodOrderingApp;
-				PRODUCT_NAME = SaladFoodOrderingApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.poly.SaladOrderingDemo;
+				PRODUCT_NAME = SaladOrderingDemo;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -701,8 +701,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.poly.SaladFoodOrderingApp;
-				PRODUCT_NAME = SaladFoodOrderingApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.poly.SaladOrderingDemo;
+				PRODUCT_NAME = SaladOrderingDemo;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
